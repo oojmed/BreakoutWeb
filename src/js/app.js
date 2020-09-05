@@ -203,6 +203,8 @@ function updateBall() {
       ball.position.x = width / 2;
   
       generateRandomBallVelocity();
+
+      generateObstacles();
     }
   }
 
