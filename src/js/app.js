@@ -87,7 +87,7 @@ function generateObstacles() {
       obstacles.push({
         x,
         y,
-        color: `rgb(${(colorIndex / yAmount) * 255}, ${(colorIndex / yAmount) * 255}, 255)` //colors[colorIndex % colors.length]
+        color: `rgb(${(colorIndex / yAmount) * 255}, ${100 + (colorIndex / yAmount) * 50}, 255)` //colors[colorIndex % colors.length]
       });
     }
 
