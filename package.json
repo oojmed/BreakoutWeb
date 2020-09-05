@@ -1,0 +1,35 @@
+{
+  "name": "boidweb",
+  "version": "1.0.0",
+  "description": "A boids simulation web app.",
+  "main": "code.js",
+  "scripts": {
+    "dev": "parcel src/index.html --no-cache",
+    "build": "sh build.sh"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oojmed/BoidWeb.git"
+  },
+  "keywords": [
+    "boids"
+  ],
+  "author": "Oojmed",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/oojmed/BoidWeb/issues"
+  },
+  "homepage": "https://github.com/oojmed/BoidWeb#readme",
+  "devDependencies": {
+    "parcel-bundler": "^1.12.4",
+    "parcel-plugin-wasm.rs": "^1.2.16",
+    "workbox-build": "^5.1.3",
+    "workbox-expiration": "^5.1.3",
+    "workbox-precaching": "^5.1.3",
+    "workbox-routing": "^5.1.3",
+    "workbox-strategies": "^5.1.3"
+  },
+  "browserslist": [
+    "last 1 Chrome versions"
+  ]
+}
