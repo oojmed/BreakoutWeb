@@ -70,27 +70,24 @@ let obstacleSeparationY = 30;
 
 let obstacles = [];
 
-let colors = [
-  'red',
-  'orange',
-  'yellow',
-  'green',
-  'blue'
-];
-
-
 generateObstacles();
 
 function generateObstacles() {
   obstacles = [];
 
   let colorIndex = 0;
+
+  let xOffset = (width - 45) % obstacleWidth;
+  let yAmount = Math.ceil(((height / 2) - 20) / (obstacleHeight + obstacleSeparationY));
+
+  console.log(yAmount);
+
   for (let y = 20; y < height / 2; y += obstacleHeight + obstacleSeparationY) {
-    for (let x = 20; x < width - 20; x += obstacleWidth + obstacleSeparationX) {
+    for (let x = 20 + xOffset; x < width - 20 - obstacleWidth; x += obstacleWidth + obstacleSeparationX) {
       obstacles.push({
         x,
         y,
-        color: colors[colorIndex % colors.length]
+        color: `rgb(${(colorIndex / yAmount) * 255}, ${(colorIndex / yAmount) * 255}, 255)` //colors[colorIndex % colors.length]
       });
     }
 
@@ -215,7 +212,7 @@ function updateBall() {
 
 function bounceBall() {
   ball.velocity.y *= -1;
-  ball.velocity.scale(1.02);
+  ball.velocity.scale(1.015);
 }
 
 let lastBallPos = ball.position.clone();
