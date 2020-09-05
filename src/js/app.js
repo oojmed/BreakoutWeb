@@ -70,18 +70,31 @@ let obstacleSeparationY = 30;
 
 let obstacles = [];
 
+let colors = [
+  'red',
+  'orange',
+  'yellow',
+  'green',
+  'blue'
+];
+
+
 generateObstacles();
 
 function generateObstacles() {
   obstacles = [];
 
+  let colorIndex = 0;
   for (let y = 20; y < height / 2; y += obstacleHeight + obstacleSeparationY) {
     for (let x = 20; x < width - 20; x += obstacleWidth + obstacleSeparationX) {
       obstacles.push({
         x,
-        y
+        y,
+        color: colors[colorIndex % colors.length]
       });
     }
+
+    colorIndex++;
   }
 }
 
@@ -221,8 +234,6 @@ async function update() {
   ctx.clearRect(0, 0, width, height);
   ctx.drawImage(offscreenCanvas, 0, 0, width, height);
 
-  ctx.fillStyle = 'white';
-
   for (let o of obstacles.slice()) {
     if (checkBallCollision(o, obstacleWidth, obstacleHeight)) {
       obstacles.splice(obstacles.indexOf(o), 1);
@@ -231,6 +242,8 @@ async function update() {
 
       continue;
     }
+
+    ctx.fillStyle = o.color;
 
     ctx.fillRect(o.x, o.y, obstacleWidth, obstacleHeight);
   }
